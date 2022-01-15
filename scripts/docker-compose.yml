@@ -6,9 +6,9 @@ services:
     image: ${PG_IMAGE}
     restart: always
     environment:
-      POSTGRES_DB: patika_nodejs_bootcamp
-      POSTGRES_USER: patika
-      POSTGRES_PASSWORD: lizaliza
+      POSTGRES_DB: ${PG_DATABASE}
+      POSTGRES_USER: { PG_USER }
+      POSTGRES_PASSWORD: { PG_PASS }
     volumes:
       - postgres_data:/var/lib/postgresql/data
       # - ./data/pgsql:/var/lib/postgresql/data
@@ -32,7 +32,7 @@ services:
       - ./servers.json:/pgadmin4/${PG_ADMIN_DEFAULT_SERVER_PATH}
     networks:
       - mynetwork
-  
+
   web:
     container_name: ${COMPOSE_PROJECT_NAME}
     #image: patikadev_web
@@ -41,14 +41,14 @@ services:
       dockerfile: dockerfile
     ports:
       - 3000:3000
-    
+
     environment:
       # Environment vars used for pg node module
       PORT: 3000
-      POSTGRES_HOST: postgres
-      POSTGRES_USER: patika
-      POSTGRES_PASSWORD: lizaliza
-      POSTGRES_DB: patika_nodejs_bootcamp
+      POSTGRES_HOST: ${PG_HOST}
+      POSTGRES_USER: ${PG_USER}
+      POSTGRES_PASSWORD: { PG_PASS }
+      POSTGRES_DB: { PG_DATABASE }
       PGPORT: 5432
       NODE_ENV: development
     depends_on:
@@ -71,6 +71,7 @@ networks:
     driver: bridge
 
 volumes:
-  node_modules: 
+  node_modules: null
   postgres_data:
 
+    null
