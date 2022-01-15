@@ -1,11 +1,10 @@
-const {Pool} = require("pg");
+const { Pool } = require("pg");
 
 const pool = new Pool({
   user: "patika",
   password: "lizaliza",
   database: "patika_nodejs_bootcamp",
-  host: "192.168.128.3",
-  
+  host: "postgres"
 });
 
 try {
