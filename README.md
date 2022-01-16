@@ -1,7 +1,3 @@
-# nodejs-skelton
+# docker-nodejs-postgresql
 
-For runing normal  
-```npm run start```
 
-For runing with hot reload   
-```npm run dev```
